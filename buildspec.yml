@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - echo Install aws cli
-      - apk add --no-cache aws-cli
+      - apk update && apk add --no-cache aws-cli
       - echo Installing Dependencies
       - yarn
   build:
