@@ -3,7 +3,8 @@ phases:
   pre_build:
     commands:
       - echo Install aws cli
-      - apk update && apk add --no-cache aws-cli
+      - apk -Uuv add groff less python py-pip && pip install awscli
+
       - echo Installing Dependencies
       - yarn
   build:
@@ -13,10 +14,10 @@ phases:
   post_build:
     commands:
       # Copy dist files to S3 bucket
-      - aws s3 cp --recursive --acl public-read ./dist s3://${S3BucketName}/ 
+      - aws s3 cp --recursive --acl public-read ./dist s3://${S3_BUCKET_NAME}/ 
 
       # Set cache-control headers to prevent Browser caching
       - >
         aws s3 cp --acl public-read 
         --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
-        ./dist/index.html s3://${S3BucketName}/
+        ./dist/index.html s3://${S3_BUCKET_NAME}/
