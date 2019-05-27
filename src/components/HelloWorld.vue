@@ -26,7 +26,7 @@ export default {
     }
   },
   async created() {
-    const res = await axios.get(`${this.API_URL}/todos`)
+    const res = await axios.get(`${this.API_URL}`)
     this.todos = res.data
   }
 }
