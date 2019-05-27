@@ -26,7 +26,7 @@ export default {
     }
   },
   async created() {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
+    const res = await axios.get(`${this.API_URL}/todos`)
     this.todos = res.data
   }
 }
