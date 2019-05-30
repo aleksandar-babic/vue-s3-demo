@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p> API Is located at {{ API_URL }} </p>
+      <p> API Is located at <a :href="API_URL">{{ API_URL }}</a> </p>
     <h3>RDS Todos list</h3>
     <ul>
       <li v-for="(todo, index) in todos " :key="index">
